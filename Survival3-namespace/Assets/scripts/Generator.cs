@@ -11,6 +11,7 @@ public class Generator : MonoBehaviour
     public Text contZombi;
     public Text contCiud;
     int numZomb;
+    int numCiud;
 
     System.Random rnd = new System.Random();
     GameObject heroe;
@@ -60,14 +61,20 @@ public class Generator : MonoBehaviour
                 ciudadano.name = "Ciudadanito";
             }
         }
-
-        numZomb = 1;
-        contCiud.text = "Zombi: " + numZomb;
-        //foreach (Zombi i in Transform.FindObjectOfType())
-        //{
-        //    numZomb += 1;
-        //}
-
+        
+        numZomb = 0;
+        foreach (Zombi i in Transform.FindObjectsOfType<Zombi>())
+        {
+            numZomb += 1;
+        }
+        contZombi.text = "Zombi: " + numZomb;
+        
+        numCiud = 0;
+        foreach (NamNPC.NamAlly.Ciudadano i in Transform.FindObjectsOfType<NamNPC.NamAlly.Ciudadano>())
+        {
+            numCiud += 1;
+        }
+        contCiud.text = "Ciudadano: " + numCiud;
     }
 
     
